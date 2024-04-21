@@ -25,7 +25,7 @@ import java.util.Properties;
 @Configuration
 @EnableWebMvc
 @ComponentScan("web")
-@PropertySource(value = { "classpath:hibernate.properties" })
+@PropertySource(value = { "classpath:db.properties" })
 @EnableTransactionManagement
 public class WebConfig implements WebMvcConfigurer {
 
