@@ -9,15 +9,20 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import web.models.User;
-import web.services.UserServices;
+import web.model.User;
+import web.service.UserServices;
 
 
 @Controller
 public class UserController {
 
     @Autowired
-    private UserServices userServices;
+    private final UserServices userServices;
+
+    @Autowired
+    public UserController(UserServices userService) {
+        this.userServices = userService;
+    }
 
     @GetMapping()
     public String index(Model model) {
