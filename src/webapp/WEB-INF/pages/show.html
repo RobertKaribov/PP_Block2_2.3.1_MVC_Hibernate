@@ -6,14 +6,16 @@
 </head>
 <body>
 <p th:text="${user.getName() + ', ' + user.getAge()}">VALUE</p>
-
 <hr>
 
-<form th:method="GET" th:action="@{/{id}/edit(id=${user.getId()})}">
-    <button>Edit</button>
-</form>
+<!--<form th:method="POST" th:action="@{/edit(id=${user.getId()})}">-->
+<!--    <button>Edit</button>-->
+<!--</form>-->
+
+<a th:href="@{/edit(id=${user.getId()})}">Edit</a>
+
 <br>
-<form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+<form th:method="POST" th:action="@{/delete(id=${user.getId()})}">
     <input type="submit" value="Delete"/>
 </form>
 </body>

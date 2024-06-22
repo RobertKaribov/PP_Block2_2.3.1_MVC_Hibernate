@@ -12,29 +12,29 @@ import java.util.List;
 public class UserServicesImpl implements UserServices {
 
     @Autowired
-    private UserDao userDAO;
+    private UserDao userDao;
 
     @Transactional(readOnly = true)
     public List<User> index() {
-        return userDAO.index();
+        return userDao.index();
     }
 
     @Transactional
     public User show(int id) {
-        return userDAO.show(id);
-
+        return userDao.show(id);
     }
+
     @Transactional
     public void save(User user) {
-        userDAO.save(user);
+        userDao.save(user);
     }
+
     @Transactional
     public void update(int id, User updatedUser) {
-        userDAO.update(id, updatedUser);
-
+        userDao.update(id, updatedUser);
     }
     @Transactional
     public void delete(int id) {
-        userDAO.delete(id);
+        userDao.delete(id);
     }
 }
