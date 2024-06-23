@@ -14,6 +14,8 @@
         <spring.version>5.3.14</spring.version>
     </properties>
 
+
+
     <dependencies>
 
         <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
@@ -58,6 +60,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.2.0.Final</version>
         </dependency>
 
     </dependencies>
