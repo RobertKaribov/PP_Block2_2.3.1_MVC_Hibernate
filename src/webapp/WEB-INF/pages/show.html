@@ -8,10 +8,6 @@
 <p th:text="${user.getName() + ', ' + user.getAge()}">VALUE</p>
 <hr>
 
-<!--<form th:method="POST" th:action="@{/edit(id=${user.getId()})}">-->
-<!--    <button>Edit</button>-->
-<!--</form>-->
-
 <a th:href="@{/edit(id=${user.getId()})}">Edit</a>
 
 <br>
