@@ -5,12 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import web.dao.UserDao;
 import web.model.User;
 import web.service.UserServices;
 
 import javax.validation.Valid;
-
 
 @Controller
 public class UserController {
@@ -22,50 +20,49 @@ public class UserController {
     }
 
     @GetMapping
-    public String index(Model model) {
-        model.addAttribute("users", userServices.index());
+    public String getAllUsers(Model model) {
+        model.addAttribute("users", userServices.getAllUsers());
         return "index";
     }
 
     @GetMapping("/show")
-    public String show(@RequestParam("id") int id, Model model) {
-        model.addAttribute("user", userServices.show(id));
+    public String getUserById(@RequestParam("id") int id, Model model) {
+        model.addAttribute("user", userServices.getUserById(id));
         return "show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("user") User user) {
+    public String createUserForm(@ModelAttribute("user") User user) {
         return "new";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("user") @Valid User user,
-                         BindingResult bindingResult, Model model) {
+    public String createUser(@ModelAttribute("user") @Valid User user,
+                             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors())
             return "new";
-        userServices.save(user);
+        userServices.saveUser(user);
         return "redirect:/";
     }
 
     @GetMapping("/edit")
-    public String edit(@RequestParam int id, Model model) {
-        model.addAttribute("user", userServices.show(id));
+    public String editUserForm(@RequestParam int id, Model model) {
+        model.addAttribute("user", userServices.getUserById(id));
         return "edit";
     }
 
-    @PostMapping ("/update")
-    public String update(@ModelAttribute("user") @Valid User user,
-                         BindingResult bindingResult, @RequestParam int id) {
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") @Valid User user,
+                             BindingResult bindingResult, @RequestParam int id) {
         if (bindingResult.hasErrors())
             return "edit";
-        userServices.update(id, user);
+        userServices.updateUser(id, user);
         return "redirect:/";
     }
 
     @PostMapping("/delete")
-    public String delete(@RequestParam int id) {
-        userServices.delete(id);
+    public String deleteUser(@RequestParam int id) {
+        userServices.deleteUser(id);
         return "redirect:/";
     }
 }
-
